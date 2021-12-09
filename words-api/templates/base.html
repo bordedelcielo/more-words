@@ -12,6 +12,14 @@
 </head>
 <body>
 
+    <a href ="{{ url_for('site.home') }}">
+        <p>The Homepage URL</p>
+    </a>
+
+    <a href = "{{ url_for('auth.signup') }}">
+        <p>The Signup URL</p>
+    </a>
+
     {% block content %} {% endblock content %}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>

@@ -1,7 +1,7 @@
 import requests
 import json
 
-word = "pizza"
+word = "panettone"
 response = requests.get(f"https://api.dictionaryapi.dev/api/v2/entries/en/{word}")
 
 # print(response.text)

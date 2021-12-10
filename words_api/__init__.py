@@ -15,6 +15,8 @@ app.register_blueprint(auth)
 
 app.config.from_object(Config)
 
+root_db.init_app(app)
+
 migrate = Migrate(app, root_db)
 
 app.json_encoder = JSONEncoder

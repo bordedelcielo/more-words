@@ -1,0 +1,16 @@
+
+
+<form method="POST">
+    <div class="form-group">
+        <fieldset id="username-field">
+            {{ form.username.label }}
+            {{ form.username(class = "form-control", placeholder = "Enter a Username Here!") }}
+        </fieldset>
+        <fieldset id ="password-field">
+            {{ form.password.label }}
+            {{ form.username(class = "form-control", placeholder = "Enter a Password Here!") }}
+        </fieldset>
+
+        {{ form.submit_button(class = "btn btn-primary btn-block") }}
+    </div>
+</form>

@@ -4,7 +4,7 @@ from words_api.models import User, db
 
 auth = Blueprint('auth', __name__, template_folder = 'auth-templates')
 
-@auth.route('/signup')
+@auth.route('/signup', methods = ['GET', 'POST'])
 def signup():
     form = UserSignupForm()
 
@@ -12,7 +12,6 @@ def signup():
         if request.method == 'POST' and form.validate_on_submit():
             username = form.username.data
             password = form.password.data
-
 
             user = User(username, password = password)
 

@@ -10,7 +10,7 @@ from werkzeug.security import generate_password_hash
 
 db = SQLAlchemy()
 # login_manager = LoginManager()
-# ma = Marshmallow()
+ma = Marshmallow()
 
 # @login_manager.user_loader
 # def load_user(user_id):
@@ -18,7 +18,7 @@ db = SQLAlchemy()
 
 class User(db.Model, UserMixin):
     id = db.Column(db.String, primary_key = True)
-    username = db.Column(db.String(150), nullable = True, default='')
+    username = db.Column(db.String(150), nullable = False, default='')
     password = db.Column(db.String, nullable = True, default = '')
     g_auth_verify = db.Column(db.Boolean, default = False)
     token = db.Column(db.String, default = '', unique = True)

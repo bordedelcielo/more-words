@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_migrate import Migrate
 from config import Config
-from .models import db as root_db
+from .models import db as root_db, ma
 from .helpers import JSONEncoder
 from .site.routes import site
 from .authentication.routes import auth
@@ -18,5 +18,7 @@ app.config.from_object(Config)
 root_db.init_app(app)
 
 migrate = Migrate(app, root_db)
+
+ma.init_app(app)
 
 app.json_encoder = JSONEncoder

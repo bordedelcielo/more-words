@@ -1,6 +1,7 @@
 
 
 <form method="POST">
+    {{ form.hidden_tag() }}
     <div class="form-group">
         <fieldset id="username-field">
             {{ form.username.label }}
@@ -8,7 +9,7 @@
         </fieldset>
         <fieldset id ="password-field">
             {{ form.password.label }}
-            {{ form.username(class = "form-control", placeholder = "Enter a Password Here!") }}
+            {{ form.password(class = "form-control", placeholder = "Enter a Password Here!") }}
         </fieldset>
 
         {{ form.submit_button(class = "btn btn-primary btn-block") }}

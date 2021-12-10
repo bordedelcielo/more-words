@@ -16,10 +16,18 @@
         <p>The Homepage URL</p>
     </a>
 
-    <a href = "{{ url_for('auth.signup') }}">
-        <p>The Signup URL</p>
+    {% if current_user.is_authenticated %}
+    <a href ="{{ url_for('auth.logout') }}">
+        <p>Log Out</p>
     </a>
-
+    {% else %}
+    <a href = "{{ url_for('auth.login') }}">
+        <p>Log In</p>
+    </a>
+    <a href = "{{ url_for('auth.signup') }}">
+        <p>Sign Up for Free!</p>
+    </a>
+    {% endif %}
     {% block content %} {% endblock content %}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>

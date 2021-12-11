@@ -7,11 +7,13 @@ from .models import db as root_db, ma, login_manager
 from .helpers import JSONEncoder
 from .site.routes import site
 from .authentication.routes import auth
+from .my_words.routes import prod
 
 app = Flask (__name__)
 
 app.register_blueprint(site)
 app.register_blueprint(auth)
+app.register_blueprint(prod)
 
 app.config.from_object(Config)
 

@@ -11,3 +11,7 @@ class UserLoginForm(FlaskForm):
     username = StringField('Username', validators = [DataRequired()])
     password = PasswordField('Password', validators = [DataRequired()])
     submit_button = SubmitField()
+
+class AddWordForm(FlaskForm):
+    word = StringField('Word', validators = [DataRequired()])
+    submit_button = SubmitField()

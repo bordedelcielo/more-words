@@ -42,11 +42,29 @@ class User(db.Model, UserMixin):
         return self.pw_hash
     
 
-# class Word(db.Model):
-#     word = db.Column(db.String(150), primary_key = True)
-#     definition = db.Column(db.String(500))
-#     date_created = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
+class Word(db.Model):
+    id = db.Column(db.String, primary_key = True)
+    word = db.Column(db.String(150))
+    definition = db.Column(db.String(500))
+    status = db.Column(db.String(50))
+    date_created = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
+    # user_token = db.Column(db.String, db.ForeignKey('user.token'), nullable = False)
 
-#     def __init__(self, word):
-#         self.word = "panettone"
-#         self.definition = (requests.get(f"https://api.dictionaryapi.dev/api/v2/entries/en/{word}")).json()[0]["meanings"][0]["definitions"][0]["definition"]
+    def __init__(self, word, definition, status='', id=''):
+        self.id = self.set_id()
+        self.word = word
+        self.definition = definition
+        self.status = status
+
+    def __repr__(self):
+        return f'The following Word has been added: {self.word}, {self.definition}'
+
+    def set_id(self):
+        return (secrets.token_urlsafe())
+
+class WordSchema(ma.Schema):
+    class Meta:
+        fields = ['id', 'word', 'definition']
+
+word_schema = WordSchema()
+words_schema = WordSchema(many = True)

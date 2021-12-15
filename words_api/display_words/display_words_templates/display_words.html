@@ -22,6 +22,7 @@ Hello World
         <th scope="col">Word</th>
         <th scope="col">Definition</th>
         <th scope="col">Status</th>
+        <th scope="col">Update Status?</th>
         <th scope="col">Delete Word?</th>
       </tr>
     </thead>
@@ -31,6 +32,7 @@ Hello World
         <td scope="row">{{ row[1] }}</td>
         <td>{{ row[2] }}</td>
         <td>{{ row[3] }}</td>
+        <td><a href="/update/{{row[0]}}" class="btn btn-warning" onclick="return confirm('Mark this word as Learned?')">Update</td>
         <td><a href="/delete/{{row[0]}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this entry?')">Delete</td>
       {% endfor %}
     </tbody>

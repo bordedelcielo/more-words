@@ -21,8 +21,19 @@ def displaywords():
 @display.route('/delete/<id>/', methods = ['GET', 'POST'])
 def delete(id):
     my_data = Word.query.get(id)
-    print(my_data)
+    # print(my_data)
     db.session.delete(my_data)
     db.session.commit()
     flash(f"Word deleted successfully")
+    return redirect(url_for('display.displaywords'))
+
+@display.route('/update/<id>', methods = ['GET', 'PUT'])
+def update(id):
+    my_data = Word.query.get(id)
+    print(my_data)
+
+    my_data.status = "Learned"
+    db.session.commit()
+    flash('You have marked this word as "Learned", congratulations!')
+
     return redirect(url_for('display.displaywords'))

@@ -30,10 +30,17 @@ def delete(id):
 @display.route('/update/<id>', methods = ['GET', 'PUT'])
 def update(id):
     my_data = Word.query.get(id)
-    print(my_data)
+    # print(my_data)
 
-    my_data.status = "Learned"
-    db.session.commit()
-    flash('You have marked this word as "Learned", congratulations!')
+    if my_data.status != "Learned":
+        my_data.status = "Learned"
+        # print(my_data.status)
+        db.session.commit()
+        flash('You have marked this word as "Learned", congratulations!')
+    else:
+        my_data.status = "Unlearned"
+        # print(my_data.status)
+        db.session.commit()
+        flash('You have marked this word as "Unlearned."')
 
     return redirect(url_for('display.displaywords'))

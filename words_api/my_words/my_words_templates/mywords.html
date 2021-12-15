@@ -9,15 +9,40 @@
 
 Hello World
 
-{% include 'addword.html' %}
-
-<!-- For Practice Below -->
-<!-- <div>
+<div>
     {% for row in data %}
     <p>{{ row[0] }}</p>
     <p>{{ row[1] }}</p>
     {% endfor %}
-</div> -->
+</div>
+
+<div class="container">
+    {% with messages = get_flashed_messages(with_categories = true) %}
+        {% if messages %}
+            {% for cat,msg in messages %}
+                {% if cat == 'user-created' %}
+                    <div class="alert alert-success">
+                        {{ msg }}
+                        <button type="button" class="close" data-dismiss = "alert">&times;</button>
+                    </div>
+
+                {% elif cat == 'auth-success' %}
+                    <div class="alert alert-success">
+                        {{ msg }}
+                        <button type="button" class="close" data-dismiss = "alert">&times;</button>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
+
+{% include 'addword.html' %}
+
+
+
+<!-- For Practice Below -->
+
 
 <!-- Use a Modal to make a CRUD form. -->
 

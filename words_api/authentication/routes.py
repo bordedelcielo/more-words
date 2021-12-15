@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, request, redirect, url_for, flash, session
 from flask_login.utils import login_required
 from words_api.forms import UserSignupForm, UserLoginForm
 from words_api.models import User, db
@@ -37,6 +37,7 @@ def login():
         if request.method =='POST' and form.validate_on_submit():
             username = form.username.data
             password = form.password.data
+            session["username"] = form.username.data
 
             logged_user = User.query.filter(User.username == username).first()
             if logged_user and check_password_hash(logged_user.password, password):

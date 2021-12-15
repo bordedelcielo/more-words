@@ -47,14 +47,16 @@ class Word(db.Model):
     word = db.Column(db.String(150))
     definition = db.Column(db.String(500))
     status = db.Column(db.String(50))
+    added_by_user = db.Column(db.String(150), nullable = False, default='')
     date_created = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
     # user_token = db.Column(db.String, db.ForeignKey('user.token'), nullable = False)
 
-    def __init__(self, word, definition, status='', id=''):
+    def __init__(self, word, definition, added_by_user, status='', id=''):
         self.id = self.set_id()
         self.word = word
         self.definition = definition
         self.status = status
+        self.added_by_user = added_by_user
 
     def __repr__(self):
         return f'The following Word has been added: {self.word}, {self.definition}'

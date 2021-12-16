@@ -1,3 +1,8 @@
 body {
     background-color: #e8dcb8;
 }
+
+.nav-link {
+    color: black;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}

@@ -12,10 +12,10 @@
 </head>
 <body>
 
-    <ul class="nav">
+    <ul class="nav justify-content-end">
         <li class="nav-item">
             <a class="nav-link" href ="{{ url_for('site.home') }}">
-                <p>The Homepage URL</p>
+                <p>Homepage</p>
             </a>
         </li>
         {% if current_user.is_authenticated %}

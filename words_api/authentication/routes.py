@@ -23,6 +23,8 @@ def signup():
 
             flash(f'You have successfully created a user account {username}', 'user-created')
 
+            login()
+
             return redirect(url_for('site.home'))
 
     except:

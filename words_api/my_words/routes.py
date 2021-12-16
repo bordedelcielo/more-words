@@ -30,7 +30,7 @@ def mywords():
             db.session.add(entry)
             db.session.commit()
 
-            flash(f"{word} added to {added_by_user}'s word list", 'user-created')
+            flash(f"{word.title()} added to {added_by_user}'s word list. {word.title()}: {definition}.", 'user-created')
 
     except:
         raise Exception('Invalid Form Data: Please check your form')

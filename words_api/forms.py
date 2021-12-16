@@ -14,4 +14,4 @@ class UserLoginForm(FlaskForm):
 
 class AddWordForm(FlaskForm):
     word = StringField('Word', validators = [DataRequired()])
-    submit_button = SubmitField()
+    submit_button = SubmitField('Add Word!')

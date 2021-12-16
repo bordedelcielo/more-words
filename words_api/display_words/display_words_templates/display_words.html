@@ -29,8 +29,8 @@ Hello World
     <tbody>
         {% for row in data %}
       <tr>
-        <td scope="row">{{ row[1] }}</td>
-        <td>{{ row[2] }}</td>
+        <td scope="row">{{ row[1].title() }}</td>
+        <td><em>{{ row[2] }}</em></td>
         <td>{{ row[3] }}</td>
         {% if row[3] != 'Learned' %}
         <td><a href="/update/{{row[0]}}" class="btn btn-dark" onclick="return confirm('Mark this word as Learned?')">Update</td>

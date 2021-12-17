@@ -13,10 +13,11 @@ def signup():
 
     try:
         if request.method == 'POST' and form.validate_on_submit():
+            email = form.email.data 
             username = form.username.data
             password = form.password.data
 
-            user = User(username, password = password)
+            user = User(email, username, password = password)
 
             db.session.add(user)
             db.session.commit()

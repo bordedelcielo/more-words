@@ -30,7 +30,7 @@ def delete(id):
 @display.route('/update/<id>', methods = ['GET', 'PUT'])
 def update(id):
     my_data = Word.query.get(id)
-    # print(my_data)
+    print(my_data)
 
     if my_data.status != "Learned":
         my_data.status = "Learned"

@@ -18,14 +18,16 @@ def load_user(user_id):
 
 class User(db.Model, UserMixin):
     id = db.Column(db.String, primary_key = True)
+    email = db.Column(db.String(150), nullable = False)
     username = db.Column(db.String(150), nullable = False, default='')
     password = db.Column(db.String, nullable = True, default = '')
     g_auth_verify = db.Column(db.Boolean, default = False)
     token = db.Column(db.String, default = '', unique = True)
     date_created = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
 
-    def __init__(self, username, id='',password='',token='',g_auth_verify=False):
+    def __init__(self, email, username, id='',password='',token='',g_auth_verify=False):
         self.id = self.set_id()
+        self.email = email
         self.username = username
         self.password = self.set_password(password)
         self.token = self.set_token(24)

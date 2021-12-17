@@ -37,9 +37,8 @@ def update_email():
         if request.method == 'POST' and form.validate_on_submit():
             my_data.email = form.email.data
             db.session.commit()
-            print(my_data.email)
-            flash('Your email address has been updated.')
-            redirect(url_for('site.profile'))
+            flash(f'Your email address has been updated to {my_data.email} 🙂', 'user-created')
+            return redirect(url_for('site.home'))
 
     except:
         raise Exception('Invalid Form Data: Please check your form')

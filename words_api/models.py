@@ -72,3 +72,5 @@ class WordSchema(ma.Schema):
 
 word_schema = WordSchema()
 words_schema = WordSchema(many = True)
+
+# random change

@@ -2,4 +2,4 @@
 __pycache__
 env
 migrations
-secrets.py
+sample_api_call.py

@@ -2,7 +2,7 @@ from flask import request, jsonify, json
 import decimal
 from words_api.models import User
 from functools import wraps
-import secrets
+import headers
 
 def token_required(our_flask_function):
     @wraps(our_flask_function)
@@ -20,7 +20,7 @@ def token_required(our_flask_function):
         except:
             owner = User.query.filter_by ( token = token ).first()
 
-            if token != owner.token and secrets.compare_digest(token, owner.token):
+            if token != owner.token and headers.compare_digest(token, owner.token):
                 return jsonify({ 'message': 'Token is Invalid' })
         return our_flask_function(current_user_token, *args, **kwargs)
     return decorated

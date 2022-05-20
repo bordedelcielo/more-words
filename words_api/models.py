@@ -5,7 +5,7 @@ from datetime import datetime
 import json
 from flask_login import UserMixin, LoginManager
 import uuid
-import secrets
+import headers
 from werkzeug.security import generate_password_hash
 
 db = SQLAlchemy()
@@ -34,7 +34,7 @@ class User(db.Model, UserMixin):
         self.g_auth_verify = g_auth_verify
 
     def set_token(self, length):
-        return secrets.token_hex(length)
+        return headers.token_hex(length)
 
     def set_id(self):
         return str(uuid.uuid4())
@@ -64,7 +64,7 @@ class Word(db.Model):
         return f'The following Word has been added: {self.word}, {self.definition}'
 
     def set_id(self):
-        return (secrets.token_urlsafe())
+        return (headers.token_urlsafe())
 
 class WordSchema(ma.Schema):
     class Meta:

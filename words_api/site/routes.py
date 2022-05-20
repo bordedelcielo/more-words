@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, session, flash, request, redirect,
 from flask_login.utils import login_required
 from words_api.models import User, db
 from words_api.forms import UpdateEmail
-from words_api.secrets import con
+from words_api.cursor import con
 cursor = con.cursor()
 
 site = Blueprint('site', __name__, template_folder = 'site-templates')

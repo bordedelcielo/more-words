@@ -5,7 +5,7 @@ from datetime import datetime
 import json
 from flask_login import UserMixin, LoginManager
 import uuid
-import headers
+import words_api.headers as headers
 from werkzeug.security import generate_password_hash
 
 db = SQLAlchemy()

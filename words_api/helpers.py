@@ -2,7 +2,7 @@ from flask import request, jsonify, json
 import decimal
 from words_api.models import User
 from functools import wraps
-import headers
+from words_api.models import headers
 
 def token_required(our_flask_function):
     @wraps(our_flask_function)

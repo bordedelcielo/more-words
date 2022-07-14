@@ -8,12 +8,9 @@
 
 Salutations, earth 🌎
 
-{% for row in data %}
-{{ row[2] }}
-{{ row[1] }}
+{{ data[0] }}
 
 
-<td><a href="/update_email" class="btn btn-dark">Update Email for {{ row[2] }}?</td>
-{% endfor %}
+<td><a href="/update_email" class="btn btn-dark">Update Email for {{ data[0] }}?</td>
 
 {% endblock content %}

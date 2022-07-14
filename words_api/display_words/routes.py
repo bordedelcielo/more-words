@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session
 from sqlalchemy import select
-from words_api.models import Word, db
+from words_api.models import Word, User, db
 prod = Blueprint('prod', __name__, template_folder = 'my_words_templates')
 from flask_login import login_required
 from words_api.headers import headers
@@ -12,9 +12,10 @@ display = Blueprint('display', __name__, template_folder = 'display_words_templa
 @display.route('/displaywords')
 @login_required
 def displaywords():
-    username = session["username"]
+    id = session["_user_id"]
+    User.query.get(id)
     # cursor.execute("select * from public.word")
-    cursor.execute(f"select * from public.word where added_by_user = '{username}'")
+    # cursor.execute(f"select * from public.word where added_by_user = '{username}'")
     result = cursor.fetchall()
     # print(result)
     return render_template('display_words.html', data=result)

@@ -5,12 +5,24 @@ from datetime import datetime
 import json
 from flask_login import UserMixin, LoginManager
 import uuid
-import words_api.headers as headers
+import secrets
+# import words_api.headers as api_keys
+# from werkzeug.datastructures import Headers
 from werkzeug.security import generate_password_hash
+from sqlalchemy.ext.declarative import declarative_base
+
+# headers = Headers()
 
 db = SQLAlchemy()
 login_manager = LoginManager()
 ma = Marshmallow()
+
+Base = declarative_base
+
+association_table = db.Table('association',
+    db.Column('user_id', db.ForeignKey('user.id')),
+    db.Column('word_id', db.ForeignKey('word.id'))
+)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -24,8 +36,13 @@ class User(db.Model, UserMixin):
     g_auth_verify = db.Column(db.Boolean, default = False)
     token = db.Column(db.String, default = '', unique = True)
     date_created = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
+    children = db.relationship('Word',
+        secondary = association_table,
+        backref=db.backref('association_table', lazy = 'dynamic'),
+        lazy='dynamic'
+        )
 
-    def __init__(self, email, username, id='',password='',token='',g_auth_verify=False):
+    def __init__(self, email, username, password='',g_auth_verify=False):
         self.id = self.set_id()
         self.email = email
         self.username = username
@@ -34,7 +51,7 @@ class User(db.Model, UserMixin):
         self.g_auth_verify = g_auth_verify
 
     def set_token(self, length):
-        return headers.token_hex(length)
+        return secrets.token_hex(length)
 
     def set_id(self):
         return str(uuid.uuid4())
@@ -64,7 +81,7 @@ class Word(db.Model):
         return f'The following Word has been added: {self.word}, {self.definition}'
 
     def set_id(self):
-        return (headers.token_urlsafe())
+        return (secrets.token_urlsafe())
 
 class WordSchema(ma.Schema):
     class Meta:
@@ -72,5 +89,3 @@ class WordSchema(ma.Schema):
 
 word_schema = WordSchema()
 words_schema = WordSchema(many = True)
-
-# random change

@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session
-
+from sqlalchemy import select
 from words_api.models import Word, db
 prod = Blueprint('prod', __name__, template_folder = 'my_words_templates')
 from flask_login import login_required

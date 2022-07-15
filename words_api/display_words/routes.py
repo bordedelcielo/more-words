@@ -13,12 +13,11 @@ display = Blueprint('display', __name__, template_folder = 'display_words_templa
 @login_required
 def displaywords():
     id = session["_user_id"]
-    User.query.get(id)
-    # cursor.execute("select * from public.word")
-    # cursor.execute(f"select * from public.word where added_by_user = '{username}'")
-    result = cursor.fetchall()
-    # print(result)
-    return render_template('display_words.html', data=result)
+    user = User.query.get(id)
+    words = Word.query.filter_by(added_by_user = user.username)
+    print(words[0].status)
+
+    return render_template('display_words.html', words=words)
 
 @display.route('/delete/<id>/', methods = ['GET', 'POST'])
 def delete(id):

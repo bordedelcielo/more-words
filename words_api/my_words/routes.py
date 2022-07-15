@@ -3,10 +3,7 @@ from flask_login.utils import login_required
 import requests
 from words_api.forms import AddWordForm
 from words_api.headers import headers
-from words_api.cursor import con
 from words_api.models import Word, db
-
-cursor = con.cursor()
 
 prod = Blueprint('prod', __name__, template_folder = 'my_words_templates')
 

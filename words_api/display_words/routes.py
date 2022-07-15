@@ -4,8 +4,6 @@ from words_api.models import Word, User, db
 prod = Blueprint('prod', __name__, template_folder = 'my_words_templates')
 from flask_login import login_required
 from words_api.headers import headers
-from words_api.cursor import con
-cursor = con.cursor()
 
 display = Blueprint('display', __name__, template_folder = 'display_words_templates')
 

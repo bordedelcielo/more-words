@@ -1,1 +1,1 @@
-web: gunicorn app:words_api
+web: gunicorn words_api:app

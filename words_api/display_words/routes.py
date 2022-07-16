@@ -13,7 +13,6 @@ def displaywords():
     id = session["_user_id"]
     user = User.query.get(id)
     words = Word.query.filter_by(added_by_user = user.username)
-    print(words[0].status)
 
     return render_template('display_words.html', words=words)
 

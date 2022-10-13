@@ -1,8 +1,17 @@
-body {
+/* body {
     background-color: #e8dcb8;
+} */
+
+body {
+    background-image: url(../../static/images/stock_image_1.jpg);
+}
+
+.greeting-1 {
+    color: goldenrod;
+    margin-left: 2vw;
 }
 
 .nav-link {
-    color: black;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    color: goldenrod;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

@@ -14,21 +14,27 @@ def mywords():
     form = AddWordForm()
 
     try:
-        if request.method == 'POST' and form.validate_on_submit():
+        if request.method == 'POST':
             word = form.word.data
             url = f"https://lingua-robot.p.rapidapi.com/language/v1/entries/en/{word}"
             response = requests.request("GET", url, headers=headers)
-            definition = response.json()["entries"][0]["lexemes"][0]["senses"][0]["definition"]
-            added_by_user = username
 
-            entry = Word(word, definition, added_by_user) # needs a user token passed in. The Matas 100% guarantee.
+            if response.status_code == 200:
 
-            db.session.add(entry)
-            db.session.commit()
+                definition = response.json()["entries"][0]["lexemes"][0]["senses"][0]["definition"]
+                added_by_user = username
 
-            flash(f"{word.title()} added to {added_by_user}'s word list. {word.title()}: {definition}", 'user-created')
+                entry = Word(word, definition, added_by_user)
+
+                db.session.add(entry)
+                db.session.commit()
+
+                flash(f"{word.title()} added to {added_by_user}'s word list. {word.title()}: {definition}", 'user-created')
+            else:
+                flash(f'The word \'{word}\' did not appear in our search. Please check the spelling of the word you entered or try another word.')
 
     except:
-        raise Exception('Invalid Form Data: Please check your form')
+        # raise Exception('Invalid Form Data: Please check your form')
+        flash(f'The word \'{word}\' did not appear in our search. Please check the spelling of the word you entered or try another word.')
 
     return render_template('mywords.html', form = form)

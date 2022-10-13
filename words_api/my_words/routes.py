@@ -31,7 +31,7 @@ def mywords():
 
                 flash(f"{word.title()} added to {added_by_user}'s word list. {word.title()}: {definition}", 'user-created')
             else:
-                flash(f'The word \'{word}\' did not appear in our search. Please check the spelling of the word you entered or try another word.')
+                flash(f'The word \'{word.title()}\' did not appear in our search. Please check the spelling of the word you entered or try another word.')
 
     except:
         # raise Exception('Invalid Form Data: Please check your form')

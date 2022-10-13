@@ -1,17 +1,36 @@
-/* body {
-    background-color: #e8dcb8;
-} */
-
 body {
     background-image: url(../../static/images/stock_image_1.jpg);
+    /* background-color: #e8dcb8; */
+    color: goldenrod;
+    padding-left: 2vw;
 }
 
-.greeting-1 {
-    color: goldenrod;
+/* .greeting-1 {
     margin-left: 2vw;
-}
+} */
 
 .nav-link {
     color: goldenrod;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.form-group {
+    /* color: goldenrod; */
+    /* margin-left: 2vw; */
+    width: 30vw;
+}
+
+.table-1 {
+    background-color: rgba(121, 206, 240, 0.329);
+    padding: 1em;
+    margin-right: 2vw;
+    border-radius: 10px;
+}
+
+th {
+    color: goldenrod;
+}
+
+td {
+    color: black;
 }

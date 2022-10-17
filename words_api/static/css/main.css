@@ -15,8 +15,7 @@ body {
 }
 
 .form-group {
-    /* color: goldenrod; */
-    /* margin-left: 2vw; */
+    min-width: 300px;
     width: 30vw;
 }
 

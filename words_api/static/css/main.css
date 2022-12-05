@@ -20,7 +20,8 @@ body {
 }
 
 .table-1 {
-    background-color: rgba(121, 206, 240, 0.5);
+    /* background-color: rgba(121, 206, 240, 0.5); */
+    background-color: rgba(225, 29, 104, 0.5);
     padding: 1em;
     margin-right: 2vw;
     border-radius: 10px;
@@ -31,5 +32,6 @@ th {
 }
 
 td {
-    color: black;
+    /* color: black; */
+    color: white;
 }
